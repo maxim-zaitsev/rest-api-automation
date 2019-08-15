@@ -1,3 +1,5 @@
+import json
+
 import requests
 from core.helpers.Logger import Logger
 
@@ -30,7 +32,9 @@ class API(Logger):
         self.log('\n')
         self.log('sending POST, url: {}, data: {}'.format(api_call, data))
         self.log('status code: {}'.format(response.status_code))
-        return response
+        response_data = json.loads(response.content)
+        self.log('response data: {}'.format(response_data))
+        return response, response_data
 
     def put(self, api, data):
         api_call = self.get_hostname() + api
@@ -38,7 +42,9 @@ class API(Logger):
         self.log('\n')
         self.log('sending PUT, url: {}, data: {}'.format(api_call, data))
         self.log('status code: {}'.format(response.status_code))
-        return response
+        response_data = json.loads(response.content)
+        self.log('response data: {}'.format(response_data))
+        return response, response_data
 
     def get(self, api):
         api_call = self.get_hostname() + api
@@ -46,7 +52,9 @@ class API(Logger):
         self.log('\n')
         self.log('sending GET, url: {}'.format(api_call))
         self.log('status code: {}'.format(response.status_code))
-        return response
+        response_data = json.loads(response.content)
+        self.log('response data: {}'.format(response_data))
+        return response, response_data
 
     def delete(self, api):
         api_call = self.get_hostname() + api
@@ -54,4 +62,6 @@ class API(Logger):
         self.log('\n')
         self.log('sending DELETE, url: {}'.format(api_call))
         self.log('status code: {}'.format(response.status_code))
-        return response
+        response_data = json.loads(response.content)
+        self.log('response data: {}'.format(response_data))
+        return response, response_data
