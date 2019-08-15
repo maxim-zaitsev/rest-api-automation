@@ -1,6 +1,6 @@
 from core.api.API import API
 
 
-class TestTemplate:
+class ReqresTemplate:
     api = API()
     api._set_hostname('http://reqres.in')

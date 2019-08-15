@@ -1,6 +1,6 @@
-from tests.template import TestTemplate
+from tests.ReqresTemplate import ReqresTemplate
 
 
-class TestUsers(TestTemplate):
+class TestUsers(ReqresTemplate):
     def test_get_all_users(self):
         self.api.get('/api/users')
