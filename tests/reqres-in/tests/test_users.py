@@ -11,3 +11,11 @@ class TestUsers(ReqresTemplate):
         assert d['data'][0]['email'] == 'george.bluth@reqres.in'
         assert d['data'][0]['first_name'] == 'George'
         assert d['data'][0]['last_name'] == 'Bluth'
+
+    def test_get_user(self):
+        r, d = self.api.get('/api/users/1')
+        assert r.status_code == 200
+        assert d['data']['id'] == 1
+        assert d['data']['email'] == 'george.bluth@reqres.in'
+        assert d['data']['first_name'] == 'George'
+        assert d['data']['last_name'] == 'Bluth'
