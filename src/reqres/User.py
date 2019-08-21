@@ -48,3 +48,11 @@ class FullUser(User):
         self.set_last_name(DataGeneration.random_string())
         self.set_email('{}@autotest.com'.format(DataGeneration.random_string()))
         self.set_job(DataGeneration.random_string())
+
+
+class UpdateUser(User):
+    def __init__(self):
+        super().__init__()
+        self.set_first_name(DataGeneration.random_string())
+        self.set_last_name(DataGeneration.random_string())
+        self.set_email('{}@autotest.com'.format(DataGeneration.random_string()))

@@ -1,4 +1,6 @@
-from src.reqres.User import FullUser
+import pytest
+
+from src.reqres.User import FullUser, UpdateUser
 from tests.ReqresTemplate import ReqresTemplate
 
 
@@ -28,3 +30,12 @@ class TestUsers(ReqresTemplate):
     def test_create_user(self):
         r, d = self.api.post('/api/users', FullUser().get_user_data())
         assert r.status_code == 200
+
+    def test_update_user(self):
+        r, d = self.api.put('/api/users/5', UpdateUser().get_user_data())
+        assert r.status_code == 200
+
+    @pytest.mark.xfail
+    def test_delete_user(self):
+        r, d = self.api.delete('/api/users/2')
+        assert r.status_code == 204
