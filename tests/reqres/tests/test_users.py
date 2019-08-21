@@ -39,3 +39,18 @@ class TestUsers(ReqresTemplate):
     def test_delete_user(self):
         r, d = self.api.delete('/api/users/2')
         assert r.status_code == 204
+
+    def test_login(self):
+        r, d = self.api.post('/api/login', {'email': 'eve.holt@reqres.in', 'password': 'cityslicka'})
+        assert r.status_code == 200
+
+    @pytest.mark.xfail
+    def test_login_negative(self):
+        r, d = self.api.post('/api/login', {'email': 'eve.holt@reqres.in'})
+        assert r.status_code == 400
+
+    def test_delay_response(self):
+        r, d = self.api.get('/api/users?delay=3')
+        assert r.status_code == 200
+        assert d['data']
+        assert d['page'] == 1
