@@ -1,3 +1,4 @@
+from src.reqres.User import FullUser
 from tests.ReqresTemplate import ReqresTemplate
 
 
@@ -19,3 +20,11 @@ class TestUsers(ReqresTemplate):
         assert d['data']['email'] == 'george.bluth@reqres.in'
         assert d['data']['first_name'] == 'George'
         assert d['data']['last_name'] == 'Bluth'
+
+    def test_get_unknown_user(self):
+        r, d = self.api.get('/api/users/999999')
+        assert r.status_code == 404
+
+    def test_create_user(self):
+        r, d = self.api.post('/api/users', FullUser().get_user_data())
+        assert r.status_code == 200
