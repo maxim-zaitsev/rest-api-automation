@@ -1,4 +1,4 @@
-from core.api.API import API
+from src.core.api.API import API
 
 
 class ReqresTemplate:

@@ -1,6 +1,6 @@
 import pytest
 
-from src.reqres.User import FullUser, UpdateUser
+from src.services.reqres.User import FullUser, UpdateUser
 from tests.ReqresTemplate import ReqresTemplate
 
 
