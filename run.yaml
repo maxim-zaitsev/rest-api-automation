@@ -22,4 +22,4 @@ steps:
 
   - script: |
       python -m pytest -s -v -n=5 run.py
-    displayName: 'executing tests...''
+    displayName: 'executing tests...'
