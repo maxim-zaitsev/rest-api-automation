@@ -4,7 +4,7 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/python
 
 trigger:
-- master
+  - master
 
 pool:
   vmImage: 'ubuntu-latest'
@@ -14,11 +14,12 @@ strategy:
       python.version: '3.7'
 
 steps:
-- script: |
-    pip install pytest pytest-azurepipelines
-    pytest
-  displayName: 'pytest'
+  - task: UsePythonVersion@0
+    inputs:
+      versionSpec: '$(python.version)'
+    displayName: 'Use Python $(python.version)'
 
-- script: |
-    python -m pytest -s -v -n=5 run.py
-  displayName: 'executing tests...'
+
+  - script: |
+      python -m pytest -s -v -n=5 run.py
+    displayName: 'executing tests...''
