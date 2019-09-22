@@ -1,4 +1,9 @@
+import logging
+
+
 class Logger:
-    @staticmethod
-    def log(value):
-        print('--> Info:', value)
+    def __init__(self):
+        self.logger = logging.getLogger(__name__)
+
+    def log(self, value):
+        self.logger.debug(value)

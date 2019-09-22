@@ -7,6 +7,7 @@ from src.core.helpers.Logger import Logger
 class API(Logger):
 
     def __init__(self):
+        super().__init__()
         self._hostname = ''
         self._cookies = {}
         self._headers = {}
