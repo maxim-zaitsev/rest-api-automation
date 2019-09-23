@@ -10,7 +10,7 @@ def extend_suite(cases):
 suite = unittest.TestSuite()
 
 if int(os.getenv('reqres', '1')) == 1:
-    from tests.reqres.tests.test_users import TestUsers
+    from tests.reqres.test_users import TestUsers
 
     extend_suite([TestUsers])
 

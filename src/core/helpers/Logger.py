@@ -6,4 +6,4 @@ class Logger:
         self.logger = logging.getLogger(__name__)
 
     def log(self, value):
-        self.logger.debug(value)
+        self.logger.info(value)
