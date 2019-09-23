@@ -30,7 +30,6 @@ class API(Logger):
     def post(self, api, data):
         api_call = self.get_hostname() + api
         response = requests.post(api_call, data)
-        self.log('\n')
         self.log('sending POST, url: {}, data: {}'.format(api_call, data))
         self.log('status code: {}'.format(response.status_code))
         response_data = json.loads(response.content)
@@ -40,7 +39,6 @@ class API(Logger):
     def put(self, api, data):
         api_call = self.get_hostname() + api
         response = requests.put(api_call, data)
-        self.log('\n')
         self.log('sending PUT, url: {}, data: {}'.format(api_call, data))
         self.log('status code: {}'.format(response.status_code))
         response_data = json.loads(response.content)
@@ -50,7 +48,6 @@ class API(Logger):
     def get(self, api):
         api_call = self.get_hostname() + api
         response = requests.get(api_call)
-        self.log('\n')
         self.log('sending GET, url: {}'.format(api_call))
         self.log('status code: {}'.format(response.status_code))
         response_data = json.loads(response.content)
@@ -60,7 +57,6 @@ class API(Logger):
     def delete(self, api):
         api_call = self.get_hostname() + api
         response = requests.get(api_call)
-        self.log('\n')
         self.log('sending DELETE, url: {}'.format(api_call))
         self.log('status code: {}'.format(response.status_code))
         response_data = json.loads(response.content)
