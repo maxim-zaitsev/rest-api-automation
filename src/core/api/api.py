@@ -1,7 +1,7 @@
 import json
 
 import requests
-from src.core.helpers.Logger import Logger
+from src.core.helpers.logger import Logger
 
 
 class API(Logger):
