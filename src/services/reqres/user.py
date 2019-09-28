@@ -1,4 +1,4 @@
-from src.core.helpers.dataGeneration import DataGeneration
+from src.helpers.dataGeneration import DataGeneration
 
 
 class User:

@@ -1,6 +1,6 @@
 import pytest
 
-from src.core.api.api import API
+from src.core.api import API
 
 
 class Service(API):
