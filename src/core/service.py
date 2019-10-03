@@ -21,9 +21,18 @@ class Service(API):
     def fail(self, v):
         self._fail += v
 
-    def verify(self, condition):
-        if not condition:
-            self.fail('--> {} condition is not True \n'.format(condition))
+    def verify(self, condition=None, *args):
+        # expects that args[0] == actual value
+        # args[1] == expected value
+        # args[2] == key of verification
+        if condition is None:
+            if args[0] != args[1]:
+                self.fail('--> verify key: {}, '
+                          'actual value: {} is not equal to expected: {}'.format(args[2], args[0], args[1]))
+
+        else:
+            if not condition:
+                self.fail('--> condition is not True')
 
     def _set_schemas_dir(self, value):
         self._schemas_dir += value
