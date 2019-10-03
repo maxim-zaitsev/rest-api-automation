@@ -11,9 +11,16 @@ class API(Logger):
         self._hostname = ''
         self._cookies = {}
         self._headers = {}
+        self._request_params = {}
 
-    def _set_header(self, key, value):
-        self._headers[key] = value
+    def _set_request_params(self, params):
+        self._request_params.update(params)
+
+    def get_request_params(self):
+        return self._request_params
+
+    def _set_header(self, headers):
+        self._headers.update(headers)
 
     def get_headers(self):
         return self._headers
@@ -70,7 +77,7 @@ class API(Logger):
 
     def get(self, api):
         api_call = self.get_hostname() + api
-        response = requests.get(api_call, headers=self.get_headers())
+        response = requests.get(api_call, headers=self.get_headers(), params=self.get_request_params())
         self.log('sending GET, url: {}'.format(api_call))
         self.log('status code: {}'.format(response.status_code))
         response_data = self.format_response_data(response)
