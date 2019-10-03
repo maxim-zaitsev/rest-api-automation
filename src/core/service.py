@@ -19,20 +19,24 @@ class Service(API):
             pytest.fail(self._fail)
 
     def fail(self, v):
-        self._fail += v
+        self._fail += '\n --> {}'.format(v)
 
-    def verify(self, condition=None, *args):
+    def verify(self, *args):
         # expects that args[0] == actual value
         # args[1] == expected value
         # args[2] == key of verification
-        if condition is None:
-            if args[0] != args[1]:
-                self.fail('--> verify key: {}, '
-                          'actual value: {} is not equal to expected: {}'.format(args[2], args[0], args[1]))
 
-        else:
-            if not condition:
-                self.fail('--> condition is not True')
+        if len(args) == 1:
+            if not args[0]:
+                self.fail('condition is not true')
+
+        elif args[0] != args[1]:
+            try:
+                verify_key = args[2]
+            except IndexError:
+                verify_key = ''
+            self.fail('verify key: {}, '
+                      'actual value: {} is not equal to expected: {}'.format(verify_key, args[0], args[1]))
 
     def _set_schemas_dir(self, value):
         self._schemas_dir += value
