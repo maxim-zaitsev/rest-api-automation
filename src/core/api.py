@@ -1,4 +1,5 @@
 import json
+from xml.dom import minidom
 
 import requests
 from src.helpers.logger import Logger
@@ -53,6 +54,9 @@ class API(Logger):
 
             if 'application/json' in content_type:
                 return json.loads(response.content)
+
+            if 'application/xml' in content_type:
+                return minidom.parse(response.content)
 
         # unknown response data format, returning as is
         return response.content
